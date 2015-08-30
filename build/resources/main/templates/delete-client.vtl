@@ -1,0 +1,32 @@
+<h1 class="text-center">Hair-Salon</h1>
+
+<div>
+  <p>Successfully deleted a client.</p>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Phone</td>
+    <td>Stylist's Name</td>
+    <td>Delete</td>
+    <td>Edit</td>
+  </tr>
+  #foreach($client in $clients)
+    <tr>
+      <td>$client.getName()</td>
+      <td>$client.getPhone()</td>
+      <td>$client.getStylistName()</td>
+      <td><form action="/client/$client.getId()/delete" method="post">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-trash"></i></span>
+      </form></td>
+
+      <td><form action="/client/$client.getId()/update" method="get">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-pencil"></i></span>
+      </form></td>
+    </tr>
+  #end
+</table>
+<a href="/">Go to Home page </a>

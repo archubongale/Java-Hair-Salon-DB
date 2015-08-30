@@ -1,0 +1,43 @@
+<h1 class="text-center">Hair-Salon</h1>
+
+<h3>Edit Client</h3>
+
+<form action='/client/$client.getId()/edit-client-success' method="post">
+  <input id="id" name="id" type="hidden" value="$client.getId()">
+  <div class="form-group">
+    <input id="clientName" name="clientName" class="form-control" type="text" required="true" placeholder="Name">
+    <input type="text" class="form-control" name="clientPhone" id="clientPhone" placeholder="Phone">
+    <select id="stylistId" name="stylistId" type="text">
+     #foreach($stylist in $stylists)
+      <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+  </select>
+  </div>
+      <button type="submit" class="btn btn-info">Submit</button>
+</form>
+
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Phone</td>
+    <td>Stylist's Name</td>
+    <td>Delete</td>
+    <td>Edit</td>
+  </tr>
+  #foreach($client in $clients)
+    <tr>
+      <td>$client.getName()</td>
+      <td>$client.getPhone()</td>
+      <td>$client.getStylistName()</td>
+      <td><form action="/client/$client.getId()/delete" method="post">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-trash"></i></span>
+      </form></td>
+
+      <td><form action="/client/$client.getId()/update" method="get">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-pencil"></i></span>
+      </form></td>
+    </tr>
+  #end
+</table>

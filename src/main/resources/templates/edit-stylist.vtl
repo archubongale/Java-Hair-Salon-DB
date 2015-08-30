@@ -1,0 +1,35 @@
+<h1 class="text-center">Hair-Salon</h1>
+
+<h3>Edit Your Information</h3>
+
+<form action='/stylist/$stylist.getId()/edit-stylist-success' method="post">
+  <input type="hidden" name="id" value="$stylist.getId">
+  <div class="form-group">
+    <input id="stylistName" name="stylistName" class="form-control" type="text" required="true" placeholder="Name">
+  </select>
+  </div>
+      <button type="submit" class="btn btn-info stylist">Submit</button>
+</form>
+
+<h2>Stylists</h2>
+
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Delete</td>
+    <td>Edit</td>
+  </tr>
+  #foreach($stylist in $stylists)
+    <tr>
+      <td>$stylist.getName()</td>
+      <td><form action="/stylist/$stylist.getId()/delete" method="post">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-trash"></i></span>
+      </form></td>
+      <td><form action="/stylist/$stylist.getId()/update" method="get">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-pencil"></i></span>
+      </form></td>
+    </tr>
+  #end
+</table>

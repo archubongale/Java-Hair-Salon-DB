@@ -1,0 +1,175 @@
+<h1 class="text-center">Hair-Salon</h1>
+
+<h3>Add a Stylist</h3>
+
+<form action='/new-stylist' method='post'>
+  <input type="hidden" name="id" value="$stylist.getId">
+  <div class="form-group">
+    <input id="stylistName" name="stylistName" class="form-control" type="text" required="true" placeholder="Name">
+  </select>
+  </div>
+      <button type="submit" class="btn btn-info stylist">Add</button>
+</form>
+
+
+<h3>Add a Client</h3>
+
+<form action='/new-client' method='post'>
+  <input type="hidden" name="id" value="$client.getId">
+  <div class="form-group">
+    <input id="clientName" name="clientName" class="form-control" type="text" required="true" placeholder="Name">
+    <input type="text" class="form-control" name="clientPhone" id="clientPhone" placeholder="Phone">
+    <select id="stylistId" name="stylistId" type="text">
+     #foreach($stylist in $stylists)
+      <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+  </select>
+  </div>
+      <button type="submit" class="btn btn-info client">Add</button>
+</form>
+
+<h2>Clients</h2>
+
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Phone</td>
+    <td>Stylist's Name</td>
+    <td>Delete</td>
+    <td>Edit</td>
+  </tr>
+  #foreach($client in $clients)
+    <tr>
+      <td>$client.getName()</td>
+      <td>$client.getPhone()</td>
+      <td>$client.getStylistName()</td>
+      <td><form action="/client/$client.getId()/delete" method="post">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-trash"></i></span>
+      </form></td>
+      <td><form action="/client/$client.getId()/update" method="get">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-pencil"></i></span>
+      </form></td>
+    </tr>
+  #end
+</table>
+
+<h2>Stylists</h2>
+
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Delete</td>
+    <td>Edit</td>
+  </tr>
+  #foreach($stylist in $stylists)
+    <tr>
+      <td>$stylist.getName()</td>
+      <td><form action="/stylist/$stylist.getId()/delete" method="post">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-trash"></i></span>
+      </form></td>
+      <td><form action="/stylist/$stylist.getId()/update" method="get">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-pencil"></i></span>
+      </form></td>
+    </tr>
+  #end
+</table>
+
+
+
+<!-- <div class="row">
+  <h1 class="text-center">Hair-Salon</h1>
+  <div class="col-md-6" id="stylists" name="stylists" float="left">
+  #if($stylists.size() > 0)
+  <table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Delete</td>
+    <td>Edit</td>
+  </tr>
+  #foreach($stylist in $stylists)
+    <tr>
+      <td>$stylist.getName()</td>
+      <td><form action="/stylist/$stylist.getId()/delete" method="post">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-trash"></i></span>
+      </form></td>
+      <td><form action="/stylist/$stylist.getId()/update" method="get">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-pencil"></i></span>
+      </form></td>
+    </tr>
+  #end
+</table>
+  #else
+    <div>
+      <h4>There are no stylists to view</h4>
+    </div>
+  #end
+  </div>
+</div>
+
+<div>
+  <h3>Add a Stylist</h3>
+    <form class="form-inline" action="/new-stylist" method="post">
+      <div class="form-group">
+        <label for="new_stylist">Name</label>
+        <input type="text" class="form-control" id="new_stylist" name="new_stylist" required="">
+      </div>
+      <button type="submit" class="btn btn-info stylist">Add</button>
+    </form>
+</div>
+
+<div class="col-md-6" id="stylists" name="stylists" float="left">
+#if($clients.size() > 0)
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Phone</td>
+    <td>Stylist's Name</td>
+    <td>Delete</td>
+    <td>Edit</td>
+  </tr>
+  #foreach($client in $clients)
+    <tr>
+      <td>$client.getName()</td>
+      <td>$client.getPhone()</td>
+      <td>$client.getStylistName()</td>
+      <td><form action="/client/$client.getId()/delete" method="post">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-trash"></i></span>
+      </form></td>
+      <td><form action="/client/$client.getId()/update" method="get">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-pencil"></i></span>
+      </form></td>
+    </tr>
+  #end
+</table>
+
+#else
+  <div>
+    <h4>There are no clients to view</h4>
+  </div>
+#end
+</div>
+
+<div>
+    <h3>Add a Client</h3>
+    <form action='/new-client' method='post'>
+      <input type="hidden" name="id" value="$client.getId">
+      <div class="form-group">
+        <input id="clientName" name="clientName" class="form-control" type="text" required="true" placeholder="Name">
+        <input type="text" class="form-control" name="clientPhone" id="clientPhone" placeholder="Phone">
+        <select id="stylistId" name="stylistId" type="text">
+     #foreach($stylist in $stylists)
+        <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+      </select>
+      </div>
+      <button type="submit" class="btn btn-info client">Add</button>
+    </form>
+</div> -->

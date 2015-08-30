@@ -1,0 +1,29 @@
+<h1 class="text-center">Hair-Salon</h1>
+
+<div>
+  <a href="/">You've been added to our stylist list</a>
+</div>
+
+<h3>Stylists</h3>
+
+<table class="table table-striped">
+  <tr>
+    <td>Name</td>
+    <td>Delete</td>
+    <td>Edit</td>
+  </tr>
+  #foreach($stylist in $stylists)
+    <tr>
+      <td>$stylist.getName()</td>
+      <td><form action="/stylist/$stylist.getId()/delete" method="post">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-trash"></i></span>
+      </form></td>
+      <td><form action="/stylist/$stylist.getId()/update" method="get">
+        <button type="submit" class="btn btn-primary">
+        <i class="glyphicon glyphicon-pencil"></i></span>
+      </form></td>
+    </tr>
+  #end
+</table>
+<a href="/">Go to Home page </a>

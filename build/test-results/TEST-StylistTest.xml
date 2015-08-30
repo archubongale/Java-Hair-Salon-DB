@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="StylistTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2015-08-30T03:45:20" hostname="Archanas-MBP.home" time="0.055">
+  <properties/>
+  <testcase name="equals_returnsTrueIfStylistsAretheSame" classname="StylistTest" time="0.008"/>
+  <testcase name="all_emptyAtFirst" classname="StylistTest" time="0.014"/>
+  <testcase name="save_assignsIdToObject" classname="StylistTest" time="0.031"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
